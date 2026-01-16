@@ -1,0 +1,12 @@
+
+{% extends 'events/base.html' %}
+{% block content %}
+<form method="get">
+<input name="q" placeholder="Search" class="border p-2">
+</form>
+<ul>
+{% for e in events %}
+<li class="bg-white p-2 my-2">{{e.name}} - {{e.location}} ({{e.category.name}})</li>
+{% endfor %}
+</ul>
+{% endblock %}
