@@ -1,5 +1,6 @@
 
 from pathlib import Path
+import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'dev-key'
 DEBUG = True
@@ -33,7 +34,13 @@ TEMPLATES = [{
     ]},
 }]
 WSGI_APPLICATION = 'core.wsgi.application'
-DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': BASE_DIR/'db.sqlite3'}}
+#DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': BASE_DIR/'db.sqlite3'}}
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://event_manager_db_po4n_user:d0ut9LfKpSOgyRrYSIB4RfpNpfS0i4g4@dpg-d5kslire5dus73fmlq4g-a.virginia-postgres.render.com/event_manager_db_po4n',
+        conn_max_age=600
+    )
+}
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Dhaka'
 STATIC_URL = '/static/'
